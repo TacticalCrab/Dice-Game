@@ -31,8 +31,10 @@ function whoWins() {
 }
 
 function shuffleDices() {
+    if (window.shuffling) return;
 
     // Begin action
+    window.shuffling = true;
     document.querySelector("#player-1-text").style.color = "white";
     document.querySelector("#player-2-text").style.color = "white";
 
@@ -52,11 +54,13 @@ function shuffleDices() {
         });
 
         whoWins();
+        window.shuffling = false;
     // ----
     }, 2000)
+    
 }
 
 const dices = document.querySelectorAll(".dice");
-
+window.shuffling = false;
 window.player1Score = 0;
 window.player2Score = 0;
